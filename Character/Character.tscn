@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Character/Character.gd" type="Script" id=1]
+[ext_resource path="res://icon.png" type="Texture" id=2]
+[ext_resource path="res://Gun.gd" type="Script" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 24.8646, 32.2074 )
+
+[node name="Character" type="KinematicBody2D"]
+script = ExtResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+region_rect = Rect2( 242, 150, 39, 48 )
+
+[node name="Gun" type="Position2D" parent="Sprite"]
+position = Vector2( 44.9492, 0 )
+script = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource( 1 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+visible = false
+current = true
+drag_margin_h_enabled = true
+drag_margin_v_enabled = true
+
+[node name="ShootAnimation" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
